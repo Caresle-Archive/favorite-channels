@@ -1,5 +1,5 @@
 const renderChannels = (req, res) => {
-	res.send('Render Channels')
+	res.render('channels/index')
 }
 
 module.exports = {
