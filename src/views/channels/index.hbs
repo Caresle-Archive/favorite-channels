@@ -1,17 +1,51 @@
-<h1>Channels</h1>
-<div class="mx-auto">
-	<div class="col-md-3">
-		<form action="" class="card">
-			<div class="card-body">
-				<input class="form-control" type="text" name="channel-name" id="channel-name" placeholder="Channel name" />
-				<input class="form-control" type="url" name="channel-url" id="channel-url" placeholder="URL"/>
-				<button class="btn btn-primary" type="submit">Add</button>
-			</div>
-		</form>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-md-3">
+			<form action="" class="card">
+				<div class="card-body">
+					<h3 class="card-title text-center">Add a channel</h3>
+					<input class="form-control" type="text" name="channel-name" id="channel-name" placeholder="Channel name" />
+					<input class="form-control" type="url" name="channel-url" id="channel-url" placeholder="URL"/>
+					<button class="btn btn-primary col" type="submit">Add</button>
+				</div>
+			</form>
+		</div>
+		<div class="col">
+			<table class="table table-dark table-striped text-center">
+				<thead>
+					<tr class="table">
+						<th>Name</th>
+						<th>URL</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Dani</td>
+						<td><a href="">Youtube</a></td>
+						<td>
+							<button class="btn btn-light">
+								<img src="./img/edit.png" alt="edit" width="16" height="16" />
+							</button>
+							<button class="btn btn-danger">
+								<img src="./img/trash.png" alt="trash" width="16" height="16" />
+							</button>
+						</td>
+					</tr>
+					<tr>
+						<td>Guinxu</td>
+						<td><a href="">Youtube</a></td>
+						<td>
+							<button class="btn btn-light">
+								<img src="./img/edit.png" alt="edit" width="16" height="16" />
+							</button>
+							<button class="btn btn-danger">
+								<img src="./img/trash.png" alt="trash" width="16" height="16" />
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
-<table>
-	<thead>
-		<th>Hola</th>
-	</thead>
-</table>
