@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 3000
 // import routes
 const indexRoutes = require('./routes/index.routes')
 const channelsRoutes = require('./routes/channels.routes')
+const userRoutes = require('./routes/user.routes')
 
 app.set('views', path.join(__dirname, 'views'))
 app.engine('hbs', exphbs({
@@ -20,6 +21,7 @@ app.set('view engine', 'hbs')
 // routes
 app.use(indexRoutes)
 app.use(channelsRoutes)
+app.use(userRoutes)
 
 app.listen(PORT, () => {
 	console.log(`Server on PORT ${PORT}`)
