@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const methodOverride = require('method-override')
 const exphbs = require('express-handlebars')
 const app = express()
 const path = require('path')
@@ -16,11 +17,13 @@ app.set('views', path.join(__dirname, 'views'))
 app.engine('hbs', exphbs({
 	defaultLayout: 'main',
 	layoutsDir: path.join(app.get('views'), 'layouts'),
+	partialsDir: path.join(app.get('views'), 'partials'),
 	extname: '.hbs'
 }))
 app.set('view engine', 'hbs')
 
-// moddlewares
+// middlewares
+app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: false}))
 
 // routes
@@ -29,6 +32,10 @@ app.use(channelsRoutes)
 app.use(userRoutes)
 
 app.use(express.static(path.join(__dirname, 'public')))
+
+app.use((req, res) => {
+	res.render('404')
+})
 
 app.listen(PORT, () => {
 	console.log(`Server on PORT ${PORT}`)

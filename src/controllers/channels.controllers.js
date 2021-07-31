@@ -2,10 +2,14 @@ const Channel = require('../models/channel')
 
 const renderChannels = async (req, res) => {
 	const channels = await Channel.find().lean()
-	console.log(channels)
 	res.render('channels/index', {
 		channels: channels
 	})
+}
+
+const deleteChannel = (req, res) => {
+	console.log(req.body)
+	res.redirect('/channels')
 }
 
 const newChannel = async (req, res) => {
@@ -19,5 +23,6 @@ const newChannel = async (req, res) => {
 
 module.exports = {
 	renderChannels,
+	deleteChannel,
 	newChannel
 }
