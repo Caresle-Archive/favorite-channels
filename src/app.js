@@ -5,6 +5,8 @@ const app = express()
 const path = require('path')
 const PORT = process.env.PORT || 3000
 
+require('./db')
+
 // import routes
 const indexRoutes = require('./routes/index.routes')
 const channelsRoutes = require('./routes/channels.routes')
@@ -17,6 +19,9 @@ app.engine('hbs', exphbs({
 	extname: '.hbs'
 }))
 app.set('view engine', 'hbs')
+
+// moddlewares
+app.use(express.urlencoded({ extended: false}))
 
 // routes
 app.use(indexRoutes)
