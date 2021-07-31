@@ -1,0 +1,12 @@
+<div class="container mt-5">
+
+	<form action="/channels/editChannel?_method=PUT" method="POST" class="card">
+		<input type="hidden" name="_id" value="{{_id}}">
+		<div class="card-body">
+			<h1>Edit form</h1>
+			<input class="form-control" type="text" name="channel_name" id="channel_name" placeholder="Channel name" value="{{name}}"/>
+			<input class="form-control" type="url" name="channel_url" id="channel_url" placeholder="URL" value="{{url}}"/>
+			<button class="btn btn-primary col" type="submit">Edit</button>
+		</div>
+	</form>
+</div>
