@@ -7,8 +7,8 @@ const renderChannels = async (req, res) => {
 	})
 }
 
-const deleteChannel = (req, res) => {
-	console.log(req.body)
+const deleteChannel = async (req, res) => {
+	await Channel.findOneAndDelete({name: req.body.name, url: req.body.url})
 	res.redirect('/channels')
 }
 
