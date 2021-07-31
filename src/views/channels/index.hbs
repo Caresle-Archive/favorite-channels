@@ -20,30 +20,20 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>Dani</td>
-						<td><a href="">Youtube</a></td>
-						<td>
-							<button class="btn btn-light">
-								<img src="./img/edit.png" alt="edit" width="16" height="16" />
-							</button>
-							<button class="btn btn-danger">
-								<img src="./img/trash.png" alt="trash" width="16" height="16" />
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<td>Guinxu</td>
-						<td><a href="">Youtube</a></td>
-						<td>
-							<button class="btn btn-light">
-								<img src="./img/edit.png" alt="edit" width="16" height="16" />
-							</button>
-							<button class="btn btn-danger">
-								<img src="./img/trash.png" alt="trash" width="16" height="16" />
-							</button>
-						</td>
-					</tr>
+					{{#each channels}}
+						<tr>
+							<td>{{ this.name }}</td>
+							<td><a href="{{ this.url }}">{{ this.url }}</a></td>
+							<td>
+								<button class="btn btn-light">
+									<img src="./img/edit.png" alt="edit" width="16" height="16" />
+								</button>
+								<button class="btn btn-danger">
+									<img src="./img/trash.png" alt="trash" width="16" height="16" />
+								</button>
+							</td>
+						</tr>
+					{{/each}}
 				</tbody>
 			</table>
 		</div>
