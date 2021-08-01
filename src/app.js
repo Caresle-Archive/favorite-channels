@@ -13,6 +13,10 @@ const indexRoutes = require('./routes/index.routes')
 const channelsRoutes = require('./routes/channels.routes')
 const userRoutes = require('./routes/user.routes')
 
+// My middlewares import
+const { errorHandler } = require('./middlewares/errorHandler.middleware')
+
+
 app.set('views', path.join(__dirname, 'views'))
 app.engine('hbs', exphbs({
 	defaultLayout: 'main',
@@ -34,9 +38,13 @@ app.use(userRoutes)
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+// My middlewares
+
 app.use((req, res) => {
 	res.render('404')
 })
+
+app.use(errorHandler)
 
 app.listen(PORT, () => {
 	console.log(`Server on PORT ${PORT}`)
