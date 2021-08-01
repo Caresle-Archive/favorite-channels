@@ -25,6 +25,7 @@ app.set('view engine', 'hbs')
 // middlewares
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: false}))
+app.use(express.json())
 
 // routes
 app.use(indexRoutes)
