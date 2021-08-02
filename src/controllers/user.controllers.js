@@ -5,13 +5,23 @@ const renderSignIn = (req, res) => {
 	res.render('user/signin')
 }
 
-const signIn = async (req, res) => {
-	const { password } = await User.findOne({username: req.body.username}).lean()
-	bcrypt.compare(req.body.password_input, password, (err, result) => {
+const signIn = async (req, res, next) => {
+	const user = await User.findOne({username: req.body.username}).lean()
+	const err = []
+
+	if (!user) {
+		err.push({error: 'User doesn\'t exist'})
+		res.render('user/signin', {errors: err})
+		return next(err)
+	}
+
+	bcrypt.compare(req.body.password_input, user.password, (error, result) => {
 		if(result) {
 			res.send('send')
 		} else {
-			res.redirect('/signin')
+			err.push({error: 'Password incorrect'})
+			res.render('user/signin', {errors: err})
+			return next(err)
 		}
 	})
 }
@@ -24,6 +34,7 @@ const createUser = async (req, res, next) => {
 	const { username, password_input, password_input_2 } = req.body
 	const userExist = await User.findOne({username: username}).lean()
 	const err = []
+
 	if (userExist) {
 		err.push({error: 'User already exist'})
 	}
@@ -33,10 +44,10 @@ const createUser = async (req, res, next) => {
 	}
 
 	if (err.length >= 1) {
-		res.redirect('/signup')
+		res.render('user/signup', {errors: err})
 		return next(err)
 	}
-	
+
 	const pass = await bcrypt.hash(req.body.password_input, 12)
 	await User.create({
 		name: req.body.fullname_input,
