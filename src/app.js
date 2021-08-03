@@ -11,7 +11,6 @@ require('./db')
 // import routes
 const indexRoutes = require('./routes/index.routes')
 const channelsRoutes = require('./routes/channels.routes')
-const userRoutes = require('./routes/user.routes')
 
 // My middlewares import
 const { errorHandler } = require('./middlewares/errorHandler.middleware')
@@ -34,7 +33,6 @@ app.use(express.json())
 // routes
 app.use(indexRoutes)
 app.use(channelsRoutes)
-app.use(userRoutes)
 
 app.use(express.static(path.join(__dirname, 'public')))
 
