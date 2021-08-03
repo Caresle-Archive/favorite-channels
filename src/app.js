@@ -5,8 +5,6 @@ const exphbs = require('express-handlebars')
 const app = express()
 const path = require('path')
 const PORT = process.env.PORT || 3000
-const session = require('express-session')
-const passport = require('passport')
 require('./db')
 
 // import routes
@@ -31,14 +29,7 @@ app.set('view engine', 'hbs')
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json())
-app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
-}))
 
-app.use(passport.initialize())
-app.use(passport.session())
 // routes
 app.use(indexRoutes)
 app.use(channelsRoutes)

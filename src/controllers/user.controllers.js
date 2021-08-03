@@ -9,13 +9,13 @@ const signIn = async (req, res, next) => {
 	const user = await User.findOne({username: req.body.username}).lean()
 	const err = []
 	
-	if (!user) {
-		err.push({error: 'User doesn\'t exist'})
-		res.render('user/signin', {errors: err})
-		return next(err)
-	}
+	// if (!user) {
+	// 	err.push({error: 'User doesn\'t exist'})
+	// 	res.render('user/signin', {errors: err})
+	// 	return next(err)
+	// }
 
-	bcrypt.compare(req.body.password_input, user.password, (error, result) => {
+	bcrypt.compare(req.body.password, user.password, (error, result) => {
 		if(result) {
 			res.send('send')
 		} else {
