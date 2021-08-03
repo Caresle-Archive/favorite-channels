@@ -8,7 +8,7 @@ const renderSignIn = (req, res) => {
 const signIn = async (req, res, next) => {
 	const user = await User.findOne({username: req.body.username}).lean()
 	const err = []
-
+	
 	if (!user) {
 		err.push({error: 'User doesn\'t exist'})
 		res.render('user/signin', {errors: err})
@@ -20,7 +20,7 @@ const signIn = async (req, res, next) => {
 			res.send('send')
 		} else {
 			err.push({error: 'Password incorrect'})
-			res.render('user/signin', {errors: err})
+			res.render('user/signin', {errors: err, username: req.body.username})
 			return next(err)
 		}
 	})
@@ -31,7 +31,7 @@ const renderSignUp = (req, res) => {
 }
 
 const createUser = async (req, res, next) => {
-	const { username, password_input, password_input_2 } = req.body
+	const { fullname_input, username, email_input, password_input, password_input_2 } = req.body
 	const userExist = await User.findOne({username: username}).lean()
 	const err = []
 
@@ -44,7 +44,7 @@ const createUser = async (req, res, next) => {
 	}
 
 	if (err.length >= 1) {
-		res.render('user/signup', {errors: err})
+		res.render('user/signup', {errors: err, fullname_input, username, email_input})
 		return next(err)
 	}
 
@@ -55,7 +55,7 @@ const createUser = async (req, res, next) => {
 		email: req.body.email_input,
 		password: pass
 	})
-	res.redirect('/signup')
+	res.redirect('/signin')
 }
 
 module.exports = {
