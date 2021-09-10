@@ -1,16 +1,16 @@
-# Favotire channels
+# Favorite channels
 
-A CRUD example using MongoDB and NodeJS
+Un ejemplo de CRUD usando MongoDB y NodeJS
 
 ![](./readme-src/favorite-channels.png)
 
-## How to run
+# Como ejecutar
 
-1. Clone the repo
-2. Run `npm i`
-3. Create a `.env` file
-4. Add to .env file `PORT` and `MONGO_URI` var
-5. Run `npm run start`
+1. Clona el repositorio
+2. Ejecuta `npm i`
+3. Crea un archivo `.env`.
+4. Agrega al archivo .env las variables `PORT` y `MONGO_URI`
+5. Ejecuta `npm run start`
 
 ## Credits
 Trash icon made by [bqlqn](https://www.flaticon.com/authors/bqlqn) from [Flaticon](https://www.flaticon.com/)
